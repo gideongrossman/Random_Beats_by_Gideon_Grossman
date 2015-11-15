@@ -22,7 +22,7 @@ def results(request, question_id):
 def vote(request, question_id):
 	return HttpResponse("You're voting on question %s." % question_id)
 
-def beats(request, beat_genre):
-    beat = beat_generator.GenerateBeat()
-    context = template.Context({'beat_genre': beat_genre, 'beat':beat})
+def beats(request, beats_in_measure):
+    beat = beat_generator.GenerateBeat(beats_in_measure)
+    context = template.Context({'beats_in_measure': beats_in_measure, 'beat':beat})
     return render(request, 'polls/beats.html', context)
