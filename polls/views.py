@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.http import Http404
+from django import template
+import beat_generator
 
 from django.shortcuts import render, get_object_or_404
 from .models import Question
@@ -21,4 +23,6 @@ def vote(request, question_id):
 	return HttpResponse("You're voting on question %s." % question_id)
 
 def beats(request, beat_genre):
-        return HttpResponse("%" %beat_genre)
+    beat = beat_generator.GenerateBeat()
+    context = template.Context({'beat_genre': beat_genre, 'beat':beat})
+    return render(request, 'polls/beats.html', context)
