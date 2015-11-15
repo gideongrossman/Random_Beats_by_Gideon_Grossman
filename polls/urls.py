@@ -10,4 +10,7 @@ urlpatterns = [
 	url(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
 	#ex: /polls/5/vote/
 	url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),	
+	
+	#beat_generator ex:rock, jazz
+	url(r'^(?P<beat_genre>[0-9]+)/beats/%', views.beats, name='beats'),
 ]
