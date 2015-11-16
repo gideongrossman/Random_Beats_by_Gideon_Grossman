@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.http import Http404
 from django import template
 import beat_generator
+import sys
 
 from django.shortcuts import render, get_object_or_404
 from .models import Question
@@ -26,3 +27,6 @@ def beats(request, beats_in_measure):
     beat = beat_generator.GenerateBeat(beats_in_measure)
     context = template.Context({'beats_in_measure': beats_in_measure, 'beat':beat})
     return render(request, 'polls/beats.html', context)
+    
+def beat_settings(request):
+    return render(request, 'polls/beat_settings.html')

@@ -1,0 +1,5 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/beats.css' %}" />
+
+<li><a href="{% url 'polls:beats' 3 %}">Generate a beat</a></li>
