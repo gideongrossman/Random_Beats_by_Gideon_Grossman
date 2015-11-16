@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 
+<h1> Yo yo, here are some questions I've been pondering and a neat little random-drum-beat-generator</h1>
 {% if latest_question_list %}
 	<ul>
 	{% for question in latest_question_list %}
@@ -11,3 +12,9 @@
 {% else %}
 	<p>No polls are available.</p>
 {% endif %}
+
+<ul>
+<li>
+<a href="{% url 'polls:beat_settings'%}">Drum Beat Generator</a>
+</li>
+</ul>
