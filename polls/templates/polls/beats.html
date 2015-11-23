@@ -14,3 +14,12 @@
 <li> <a href="{% url 'polls:beat_settings' %}">Change beat settings</a></li>
 <li><a href="{% url 'polls:sheet_music'%}">View sheet music</a></li>
 <li><a href="{%url 'polls:beat_saved'%}">Save this beat</a></li>
+
+
+
+<form action="{%url 'polls:beat_saved' %}" method="post">
+{% csrf_token %}
+	<input type="text" name="beat_name" id="beat_name_box" value ="Not_yet_named"/>
+	<label for="beat_name_box">Enter a name for your beat.</label></br>
+<input type="submit" value="Save beat"/>
+</form>

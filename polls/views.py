@@ -6,6 +6,8 @@ reload(beat_generator)
 import sys
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.template import RequestContext
+
 
 
 from django.shortcuts import render, get_object_or_404
@@ -44,10 +46,10 @@ def vote(request, question_id):
     
 def beats(request, beats_in_measure):
     hits, notation = beat_generator.GenerateBeat(beats_in_measure)
-    context = template.Context({'beats_in_measure': beats_in_measure, 'hits':hits, 'notation':notation})
-    beat = Beat(beat_name="beat dos", beat_nickname = "Zip Zop")
-    beat.save()
+    question = Question.objects.get(id=1)
+    context = {'beats_in_measure': beats_in_measure, 'hits':hits, 'notation':notation, 'question':question}
     return render(request, 'polls/beats.html', context)
+
     
 def beat_settings(request):
     return render(request, 'polls/beat_settings.html')
@@ -61,8 +63,12 @@ def sheet_music(request):
     #return render(request, 'polls/sheet_music.html')
     
 def beat_saved(request):
-    return render(request, 'polls/beat_saved.html')
+    beat_name = request.POST['beat_name']
+    beat = Beat(beat_name=beat_name, beat_nickname = "Zip Zop")
+    beat.save()
+    return HttpResponseRedirect(reverse('polls:beat_index'))
     
+
 def beat_index(request):
     beat_list = Beat.objects.all()
     context = {'beat_list':beat_list}
