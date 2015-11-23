@@ -1,0 +1,9 @@
+{% if beat_list %}
+	<ul>
+	{% for beat in beat_list %}
+		<li>{{beat}}</li>
+	{%endfor%}
+	</ul>
+{%else%}
+	<p>No beats have been saved.</p>
+{%endif%}

@@ -15,4 +15,6 @@ urlpatterns = [
 	url(r'^beats/(?P<beats_in_measure>[0-9]+)/$', views.beats, name='beats'),
 	url(r'^beats/$', views.beat_settings, name = 'beat_settings'),
 	url(r'^beats/sheet_music/$', views.sheet_music, name = 'sheet_music'),
+	url(r'^beats/beat_saved/$', views.beat_saved, name = 'beat_saved'),
+	url(r'^beats/beat_index/$', views.beat_index, name = 'beat_index'),
 ]

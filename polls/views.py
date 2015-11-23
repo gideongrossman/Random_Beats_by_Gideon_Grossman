@@ -59,3 +59,11 @@ def sheet_music(request):
     return response
     pdf.closed
     #return render(request, 'polls/sheet_music.html')
+    
+def beat_saved(request):
+    return render(request, 'polls/beat_saved.html')
+    
+def beat_index(request):
+    beat_list = Beat.objects.all()
+    context = {'beat_list':beat_list}
+    return render(request, 'polls/beat_index.html', context)

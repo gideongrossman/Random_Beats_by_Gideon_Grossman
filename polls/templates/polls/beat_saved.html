@@ -1,0 +1,6 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/beats.css' %}" />
+
+<h1> The beat has been saved. </h1>
+<li><a href="{%url 'polls:beat_index'%}">View Saved Beats</a></li>
