@@ -1,4 +1,5 @@
 from random import randint
+import sheet_music_generator
 
 
 def GenerateBeat(number_of_beats_in_measure):
@@ -7,7 +8,8 @@ def GenerateBeat(number_of_beats_in_measure):
     beats_to_hit_the_snare = ChooseBeatsToHitDrum(number_of_snare_hits, int(number_of_beats_in_measure))
     beats_to_kick_the_bass = ChooseBeatsToHitDrum(number_of_bass_kicks, int(number_of_beats_in_measure))
     new_beat = Beat(beats_to_kick_the_bass, beats_to_hit_the_snare)
-    return new_beat
+    sheet_music_generator.GenerateSheetMusicImage()
+    return new_beat, 4
     
 def ChooseBeatsToHitDrum(number_of_beats, number_of_beats_in_measure):
     hits = []

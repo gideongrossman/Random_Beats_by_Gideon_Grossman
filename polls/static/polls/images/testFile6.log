@@ -1,0 +1,25 @@
+# -*-compilation-*-
+Processing `C:/Gideon/Professional Education/djangoTutorialWithoutGal/hellodjango3/polls/static/polls/images/testFile6.ly'
+Parsing...
+C:/Gideon/Professional Education/djangoTutorialWithoutGal/hellodjango3/polls/static/polls/images/testFile6.ly:1:1: error: undefined character or shorthand: 
+
+ersion "2.12.3"
+C:/Gideon/Professional Education/djangoTutorialWithoutGal/hellodjango3/polls/static/polls/images/testFile6.ly:1:16: error: not a symbol
+ersion "2.12.3
+               "
+C:/Gideon/Professional Education/djangoTutorialWithoutGal/hellodjango3/polls/static/polls/images/testFile6.ly:2:1: error: syntax error, unexpected '{', expecting '='
+
+{
+C:/Gideon/Professional Education/djangoTutorialWithoutGal/hellodjango3/polls/static/polls/images/testFile6.ly:1: warning: no \version statement found, please add
+
+\version "2.18.2"
+
+for future compatibility
+Interpreting music...
+Preprocessing graphical objects...
+Finding the ideal number of pages...
+Fitting music on 1 page...
+Drawing systems...
+Layout output to `/Gideon/Professional Education/djangoTutorialWithoutGal/hellodjango3/polls/static/polls/images/testFile6.ps'...
+Converting to `/Gideon/Professional Education/djangoTutorialWithoutGal/hellodjango3/polls/static/polls/images/testFile6.pdf'...
+fatal error: failed files: "C:\\Gideon\\Professional Education\\djangoTutorialWithoutGal\\hellodjango3\\polls\\static\\polls\\images\\testFile6.ly"

@@ -14,4 +14,5 @@ urlpatterns = [
 	#beat_generator ex:rock, jazz
 	url(r'^beats/(?P<beats_in_measure>[0-9]+)/$', views.beats, name='beats'),
 	url(r'^beats/$', views.beat_settings, name = 'beat_settings'),
+	url(r'^beats/sheet_music/$', views.sheet_music, name = 'sheet_music'),
 ]
