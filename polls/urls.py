@@ -17,4 +17,5 @@ urlpatterns = [
 	url(r'^beats/sheet_music/$', views.sheet_music, name = 'sheet_music'),
 	url(r'^beats/beat_saved/$', views.beat_saved, name = 'beat_saved'),
 	url(r'^beats/beat_index/$', views.beat_index, name = 'beat_index'),
+	url(r'^beats/beat_detail/$', views.beat_detail, name = 'beat_detail'),
 ]
