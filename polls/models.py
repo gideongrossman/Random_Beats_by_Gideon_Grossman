@@ -24,6 +24,7 @@ class Choice(models.Model):
         return self.choice_text
         
 class Beat(models.Model):
-    beat_name = models.CharField(max_length=200)
+    beat_name = models.CharField(max_length=200) 
+    beat_nickname = models.CharField(max_length=200)
     def __str__(self):
         return self.beat_name

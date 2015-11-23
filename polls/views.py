@@ -9,7 +9,7 @@ from django.views import generic
 
 
 from django.shortcuts import render, get_object_or_404
-from .models import Choice, Question
+from .models import Choice, Question, Beat
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
@@ -45,6 +45,8 @@ def vote(request, question_id):
 def beats(request, beats_in_measure):
     hits, notation = beat_generator.GenerateBeat(beats_in_measure)
     context = template.Context({'beats_in_measure': beats_in_measure, 'hits':hits, 'notation':notation})
+    beat = Beat(beat_name="beat dos", beat_nickname = "Zip Zop")
+    beat.save()
     return render(request, 'polls/beats.html', context)
     
 def beat_settings(request):
