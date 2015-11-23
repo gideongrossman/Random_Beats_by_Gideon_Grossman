@@ -64,9 +64,14 @@ def sheet_music(request):
     
 def beat_saved(request):
     beat_name = request.POST['beat_name']
-    beat = Beat(beat_name=beat_name, beat_nickname = "Zip Zop")
-    beat.save()
-    return HttpResponseRedirect(reverse('polls:beat_index'))
+    if beat_name == "":
+        return render(request, 'polls/beats.html', {
+            'error_message': "DUDE, this beat deserves a name! You must name it before you save it.",
+            })
+    else:
+        beat = Beat(beat_name=beat_name)
+        beat.save()
+        return HttpResponseRedirect(reverse('polls:beat_index'))
     
 
 def beat_index(request):
