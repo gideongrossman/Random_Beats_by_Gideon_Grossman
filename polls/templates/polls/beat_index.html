@@ -1,7 +1,7 @@
 {% if beat_list %}
 	<ul>
 	{% for beat in beat_list %}
-		<li><a href="{% url 'polls:beat_detail' %}">{{beat}}</li>
+		<li><a href="{% url 'polls:beat_detail' beat.id%}">{{beat}}</li>
 	{%endfor%}
 	</ul>
 {%else%}

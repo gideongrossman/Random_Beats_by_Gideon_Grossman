@@ -62,8 +62,9 @@ def sheet_music(request):
     pdf.closed
     #return render(request, 'polls/sheet_music.html')
     
-def beat_detail(request):
-    return render(request, 'polls/beat_detail.html')
+def beat_detail(request, beat_id):
+    beat = get_object_or_404(Beat, pk=beat_id)
+    return render(request, 'polls/beat_detail.html', {'beat':beat})
     
 def beat_saved(request):
     beat_name = request.POST['beat_name']
@@ -72,7 +73,7 @@ def beat_saved(request):
             'error_message': "DUDE, this beat deserves a name! You must name it before you save it.",
             })
     else:
-        beat = Beat(beat_name="Steph")
+        beat = Beat(beat_name=beat_name)
         beat.save()
         return HttpResponseRedirect(reverse('polls:beat_index'))
     
