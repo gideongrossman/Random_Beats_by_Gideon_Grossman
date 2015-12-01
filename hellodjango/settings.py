@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MEDIA_ROOT = ''
+MEDIA_URL = ''
 
 # Application definition
 
@@ -38,8 +40,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'polls',
+	'audiofield',
 )
 
+CHANNEL_TYPE_VALUE = 0
+FREQ_TYPE_VALUE = 8000
+CONVERT_TYPE_VALUE = 0
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,6 +55,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'audiofield.middleware.threadlocals.ThreadLocals',
 )
 
 ROOT_URLCONF = 'hellodjango.urls'

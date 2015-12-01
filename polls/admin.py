@@ -19,9 +19,27 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question_text']
     
 class BeatAdmin(admin.ModelAdmin):
-    fieldsets = [
-    ('Beat Name', {'fields': ['beat_name', 'bass_kicks', 'snare_hits'], })
-    ]	
+    list_display = (..., 'audio_file_player', ...)
+    actions = ['custom_delete_selected']
+
+    def custom_delete_selected(self, request, queryset):
+        #custom delete code
+        n = queryset.count()
+        for i in queryset:
+            if i.audio_file:
+                if os.path.exists(i.audio_file.path):
+                    os.remove(i.audio_file.path)
+            i.delete()
+        self.message_user(request, ("Successfully deleted %d audio files.") % n)
+    custom_delete_selected.short_description = "Delete selected items"
+    
+    def get_actions(self, request):
+        actions = super(AudioFileAdmin, self).get_actions(request)
+        del actions['delete_selected']
+        return actions
+        fieldsets = [
+        ('Beat Name', {'fields': ['beat_name', 'bass_kicks', 'snare_hits'], })
+        ]	
     
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Beat, BeatAdmin)
