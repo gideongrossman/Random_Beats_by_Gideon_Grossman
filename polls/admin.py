@@ -20,7 +20,7 @@ class QuestionAdmin(admin.ModelAdmin):
     
 class BeatAdmin(admin.ModelAdmin):
     fieldsets = [
-    ('Beat Name', {'fields': ['beat_name']})
+    ('Beat Name', {'fields': ['beat_name', 'bass_kicks', 'snare_hits'], })
     ]	
     
 admin.site.register(Question, QuestionAdmin)

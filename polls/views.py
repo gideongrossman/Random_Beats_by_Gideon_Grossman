@@ -45,9 +45,9 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
     
 def beats(request, beats_in_measure):
-    hits, notation = beat_generator.GenerateBeat(beats_in_measure)
-    question = Question.objects.get(id=1)
-    context = {'beats_in_measure': beats_in_measure, 'hits':hits, 'notation':notation, 'question':question}
+    beat_generator.GenerateBeat(beats_in_measure)
+    latest_beat = Beat.objects.latest()
+    context = {'beats_in_measure': beats_in_measure, 'latest_beat':latest_beat}
     return render(request, 'polls/beats.html', context)
 
     
@@ -68,12 +68,14 @@ def beat_detail(request, beat_id):
     
 def beat_saved(request):
     beat_name = request.POST['beat_name']
+    beat = Beat.objects.latest()
+
     if beat_name == "":
-        return render(request, 'polls/beats.html', {
-            'error_message': "DUDE, this beat deserves a name! You must name it before you save it.",
-            })
+        context = {'error_message': "DUDE, this beat deserves a name! You must name it before you save it.",
+            'latest_beat': beat,}
+        return render(request, 'polls/beats.html',context)
     else:
-        beat = Beat(beat_name=beat_name)
+        beat.beat_name = beat_name
         beat.save()
         return HttpResponseRedirect(reverse('polls:beat_index'))
     
