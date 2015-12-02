@@ -45,8 +45,9 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
     
 def beats(request, beats_in_measure):
-    beat_generator.GenerateBeat(beats_in_measure)
-    latest_beat = Beat.objects.latest()
+    new_beat = beat_generator.GenerateBeat(beats_in_measure)
+    new_beat.save()
+    latest_beat = new_beat
     context = {'beats_in_measure': beats_in_measure, 'latest_beat':latest_beat}
     return render(request, 'polls/beats.html', context)
 
