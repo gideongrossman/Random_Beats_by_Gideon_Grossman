@@ -32,3 +32,7 @@ class Beat(models.Model):
         get_latest_by = 'creation_date'
     def __str__(self):
         return self.beat_name
+    def save(self, force_insert=False, force_update=False, using=None):
+        if self.beat_name == "Harry":
+            self.beat_name = "Hairy Hairy Harry (Harry is Hairy!)"
+        super(Beat, self).save() # Call the "real" save() method.
