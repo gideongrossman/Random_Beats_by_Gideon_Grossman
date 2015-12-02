@@ -15,8 +15,7 @@
 
 <li> <a href="{% url 'polls:beat_settings' %}">Change beat settings</a></li>
 <li><a href="{% url 'polls:sheet_music'%}">View sheet music</a></li>
-<li><a href="{%url 'polls:beat_saved'%}">Save this beat</a></li>
-
+<li><a href="{% url 'polls:beat_index' %}">View all saved beats</a></li>
 
 
 <form action="{%url 'polls:beat_saved' %}" method="post">

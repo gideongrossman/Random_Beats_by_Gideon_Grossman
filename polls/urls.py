@@ -18,4 +18,6 @@ urlpatterns = [
 	url(r'^beats/beat_saved/$', views.beat_saved, name = 'beat_saved'),
 	url(r'^beats/beat_index/$', views.beat_index, name = 'beat_index'),
 	url(r'^beats/beat_detail/(?P<beat_id>[0-9]+)/$', views.beat_detail, name = 'beat_detail'),
+	url(r'^beats/delete_beat/(?P<beat_id>[0-9]+)/$', views.delete_beat, name = 'delete_beat'),
+	url(r'^beats/delete_all_beats/$', views.delete_all_beats, name = 'delete_all_beats'),
 ]

@@ -67,7 +67,7 @@ def beat_detail(request, beat_id):
     return render(request, 'polls/beat_detail.html', {'beat':beat})
     
 def beat_saved(request):
-    beat_name = request.POST['beat_name']
+    beat_name = request.POST["beat_name"]
     beat = Beat.objects.latest()
 
     if beat_name == "":
@@ -84,3 +84,12 @@ def beat_index(request):
     beat_list = Beat.objects.all()
     context = {'beat_list':beat_list}
     return render(request, 'polls/beat_index.html', context)
+    
+def delete_beat(request, beat_id):
+    beat = Beat.objects.filter(pk=beat_id)
+    beat.delete()
+    return HttpResponseRedirect(reverse('polls:beat_index'))
+    
+def delete_all_beats(request):
+    Beat.objects.all().delete()
+    return HttpResponseRedirect(reverse('polls:beat_index'))
