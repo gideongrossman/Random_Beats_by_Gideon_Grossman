@@ -7,6 +7,7 @@ import sys
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.template import RequestContext
+from reportlab.pdfgen import canvas
 
 
 
@@ -87,10 +88,28 @@ def beat_index(request):
     return render(request, 'polls/beat_index.html', context)
     
 def delete_beat(request, beat_id):
-    beat = Beat.objects.filter(pk=beat_id)
+    beat = Beat.objects.get(pk=beat_id)
     beat.delete()
     return HttpResponseRedirect(reverse('polls:beat_index'))
     
 def delete_all_beats(request):
     Beat.objects.all().delete()
     return HttpResponseRedirect(reverse('polls:beat_index'))
+
+def pdf_generating_view(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
+
+    # Create the PDF object, using the response object as its "file."
+    p = canvas.Canvas(response)
+    p.rect(280,480,200,40,fill=0)
+
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+    p.drawString(300, 500, "Sheet music goes here.")
+
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+    return response

@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+from django.forms import ModelForm
 
 # Create your models here.
 
@@ -28,6 +29,7 @@ class Beat(models.Model):
     snare_hits = models.CharField(max_length=200, default = "empty")
     bass_kicks = models.CharField(max_length=200, default = "empty")
     creation_date = models.DateTimeField(auto_now_add = True, editable=False, null=True)
+    pdf = models.FileField(upload_to = 'sheet_music/%Y/%m')
     class Meta:
         get_latest_by = 'creation_date'
     def __str__(self):
@@ -36,3 +38,8 @@ class Beat(models.Model):
         if self.beat_name == "Harry":
             self.beat_name = "Hairy Hairy Harry (Harry is Hairy!)"
         super(Beat, self).save() # Call the "real" save() method.
+        
+class BeatForm(ModelForm):
+    class Meta:
+        model = Beat
+        fields = ['beat_name','snare_hits','bass_kicks']

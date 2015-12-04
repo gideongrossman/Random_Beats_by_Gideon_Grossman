@@ -20,4 +20,5 @@ urlpatterns = [
 	url(r'^beats/beat_detail/(?P<beat_id>[0-9]+)/$', views.beat_detail, name = 'beat_detail'),
 	url(r'^beats/delete_beat/(?P<beat_id>[0-9]+)/$', views.delete_beat, name = 'delete_beat'),
 	url(r'^beats/delete_all_beats/$', views.delete_all_beats, name = 'delete_all_beats'),
+	url(r'^beats/create_a_pdf/$', views.pdf_generating_view, name = 'pdf_generator'),
 ]
