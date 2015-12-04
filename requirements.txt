@@ -10,7 +10,7 @@ Abjad==2.16
 alabaster==0.7.6
 amqp==1.4.7
 anyjson==0.3.3
-appinst==2.1.2
+appinst==2.1.5
 apptools==4.3.0
 atom==0.3.9
 Babel==2.1.1
