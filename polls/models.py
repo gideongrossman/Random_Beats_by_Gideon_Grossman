@@ -29,7 +29,7 @@ class Beat(models.Model):
     snare_hits = models.CharField(max_length=200, default = "empty")
     bass_kicks = models.CharField(max_length=200, default = "empty")
     creation_date = models.DateTimeField(auto_now_add = True, editable=False, null=True)
-    pdf = models.FileField(upload_to = 'sheet_music/%Y/%m')
+    pdf = models.FileField(upload_to = 'sheet_music/%Y/%m',null=True)
     class Meta:
         get_latest_by = 'creation_date'
     def __str__(self):
