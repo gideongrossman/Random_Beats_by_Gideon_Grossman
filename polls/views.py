@@ -8,7 +8,9 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from django.template import RequestContext
 from reportlab.pdfgen import canvas
-
+from django.shortcuts import render_to_response
+from .forms import UploadFileForm
+from .uploadedFilesHandling import handle_uploaded_file
 
 
 from django.shortcuts import render, get_object_or_404
@@ -113,3 +115,15 @@ def pdf_generating_view(request):
     p.showPage()
     p.save()
     return response
+#    
+#def give_beat_a_pdf(request):
+#    beat_pdf = request.POST["beat_pdf"]
+#    beat = Beat.objects.latest()
+#    beat.beat_pdf = beat_pdf
+#    
+def upload_file(request):
+    beat = Beat.objects.latest()
+    if request.method == 'POST':
+        beat.beat_pdf = request.FILES
+        beat.save()
+        return HttpResponseRedirect(reverse('polls:beat_index'))
