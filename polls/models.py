@@ -29,7 +29,7 @@ class Beat(models.Model):
     snare_hits = models.CharField(max_length=200, default = "empty")
     bass_kicks = models.CharField(max_length=200, default = "empty")
     creation_date = models.DateTimeField(auto_now_add = True, editable=False, null=True)
-    beat_pdf = models.FileField(upload_to = 'pic_folder/', default = 'pic_folder/None/no-img.pdf')
+    beat_pdf = models.ImageField(upload_to = 'pic_folder/')
     pdf = models.FileField(upload_to = 'sheet_music/%Y/%m',null=True)
     class Meta:
         get_latest_by = 'creation_date'

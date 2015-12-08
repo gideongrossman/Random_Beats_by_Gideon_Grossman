@@ -123,7 +123,6 @@ def pdf_generating_view(request):
 #    
 def upload_file(request):
     beat = Beat.objects.latest()
-    if request.method == 'POST':
-        beat.beat_pdf = request.FILES
-        beat.save()
-        return HttpResponseRedirect(reverse('polls:beat_index'))
+    beat.beat_pdf = request.POST["beat_file"]
+    beat.save()
+    return HttpResponseRedirect(reverse('polls:beat_index'))

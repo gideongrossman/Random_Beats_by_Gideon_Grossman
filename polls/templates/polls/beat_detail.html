@@ -6,6 +6,6 @@ This page will display the beat corresponding to the request id.
 <h1>{{beat.beat_name}}</h1>
 <h2>Kick the bass drum on beats {{beat.bass_kicks}}</h2>
 <h2>Hit the snare drum on beats {{beat.snare_hits}}</h2>
-<h2>Beat file: {{beat.beat_pdf}}</h2>
+<h2>Beat file: {{beat.beat_pdf.name}}; {{beat.beat_pdf.url}}; {{beat.beat_pdf.path}}; </h2>
 
 <h3><a href="{%url 'polls:delete_beat' beat.id%}">Delete the beat</a><h3>
