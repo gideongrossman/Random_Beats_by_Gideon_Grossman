@@ -24,3 +24,9 @@
 	<label for="beat_name_box">Enter a name for your beat.</label></br>
 <input type="submit" value="Save beat"/>
 </form>
+
+<form action="{%url 'polls:file_upload' %}" method="post">
+{% csrf_token %}
+	<input type="file" name="beat_file" id="picture" value="Upload a file dude." accept="image/*">
+<input type="submit">
+</form>
